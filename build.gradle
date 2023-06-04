@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    lombokVersion = '1.18.28'
+    log4jVersion = '2.0.6'
+}
+dependencies {
+    implementation "org.slf4j:slf4j-api:$log4jVersion"
+    implementation "org.slf4j:slf4j-log4j12:$log4jVersion"
+    implementation 'com.google.guava:guava:12.0'
+
+    compileOnly "org.projectlombok:lombok:$lombokVersion"
+    annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+
+    testCompileOnly "org.projectlombok:lombok:$lombokVersion"
+    testAnnotationProcessor "org.projectlombok:lombok:$lombokVersion"
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+}
+
+test {
+    useJUnitPlatform()
+}
